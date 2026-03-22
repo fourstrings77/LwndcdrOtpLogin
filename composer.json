@@ -1,0 +1,34 @@
+{
+    "name": "lwndcdr/lwndcdr-otp-login",
+    "description": "lwndcdr/lwndcdr-otp-login",
+    "type": "shopware-platform-plugin",
+    "version": "1.0.0",
+    "license": "MIT",
+    "require": {
+        "shopware/core": "~6.7.0",
+        "spomky-labs/otphp": "^11.4",
+        "endroid/qr-code": "^6.0"
+    },
+    "extra": {
+        "shopware-plugin-class": "Lwndcdr\\OtpLogin\\OtpLogin",
+        "label": {
+            "de-DE": "Login mit (T)OTP",
+            "en-GB": "Login with (T)OTP"
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Lwndcdr\\OtpLogin\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Lwndcdr\\Tests\\": "tests/"
+        }
+    },
+    "config": {
+        "allow-plugins": {
+            "symfony/runtime": true
+        }
+    }
+}

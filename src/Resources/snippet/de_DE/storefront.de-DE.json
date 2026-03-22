@@ -1,0 +1,42 @@
+{
+    "lwndcdr-otp": {
+        "verify": {
+            "headline": "Zwei-Faktor-Authentifizierung",
+            "description": "Bitte geben Sie den Code aus Ihrer Authenticator-App oder den per E-Mail zugesandten Code ein.",
+            "codeLabel": "Einmalcode",
+            "submitButton": "Bestätigen",
+            "cancelLink": "Abbrechen und abmelden",
+            "invalidCode": "Der Code war ungültig oder abgelaufen. Bitte erneut versuchen.",
+            "rateLimited": "Zu viele Fehlversuche. Bitte warten Sie 15 Minuten bevor Sie es erneut versuchen."
+        },
+        "account": {
+            "sidebar": {
+                "security": "Sicherheit"
+            },
+            "headline": "Zwei-Faktor-Authentifizierung",
+            "emailOtp": {
+                "headline": "Einmalpasswort per E-Mail",
+                "description": "Bei jeder Anmeldung wird ein Einmalcode an Ihre hinterlegte E-Mail-Adresse gesendet.",
+                "activeLabel": "Aktiviert",
+                "inactiveLabel": "Deaktiviert",
+                "toggleButton": "Speichern",
+                "toggleSuccess": "E-Mail-OTP-Einstellung gespeichert."
+            },
+            "totp": {
+                "headline": "Authentifizierungs-App (TOTP)",
+                "description": "Nutzen Sie eine TOTP-kompatible Authenticator-App (z. B. Authy, Google Authenticator) für Anmeldecodes.",
+                "setupButton": "Authenticator-App einrichten",
+                "activeNotice": "Authenticator-App ist aktiv.",
+                "disableButton": "Authenticator-App entfernen",
+                "scanInstruction": "Scannen Sie den QR-Code mit Ihrer Authenticator-App und geben Sie anschließend den sechsstelligen Code ein.",
+                "qrCodeAlt": "TOTP-QR-Code",
+                "manualEntryLabel": "Kein QR-Scanner? Schlüssel manuell eingeben:",
+                "codeLabel": "Bestätigungscode",
+                "confirmButton": "Bestätigen",
+                "invalidCode": "Der Code war ungültig oder abgelaufen. Bitte erneut versuchen.",
+                "setupSuccess": "Authenticator-App erfolgreich eingerichtet.",
+                "disableSuccess": "Authenticator-App wurde entfernt."
+            }
+        }
+    }
+}

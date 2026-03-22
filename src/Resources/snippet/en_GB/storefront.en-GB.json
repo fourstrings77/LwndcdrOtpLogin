@@ -1,0 +1,42 @@
+{
+    "lwndcdr-otp": {
+        "verify": {
+            "headline": "Two-Factor Authentication",
+            "description": "Please enter the code from your authenticator app or the code sent to your email address.",
+            "codeLabel": "One-time code",
+            "submitButton": "Verify",
+            "cancelLink": "Cancel and log out",
+            "invalidCode": "The code was invalid or has expired. Please try again.",
+            "rateLimited": "Too many failed attempts. Please wait 15 minutes before trying again."
+        },
+        "account": {
+            "sidebar": {
+                "security": "Security"
+            },
+            "headline": "Two-Factor Authentication",
+            "emailOtp": {
+                "headline": "One-Time Password via Email",
+                "description": "Each login will require a one-time code sent to your registered email address.",
+                "activeLabel": "Enabled",
+                "inactiveLabel": "Disabled",
+                "toggleButton": "Save",
+                "toggleSuccess": "Email OTP setting saved."
+            },
+            "totp": {
+                "headline": "Authenticator App (TOTP)",
+                "description": "Use any TOTP-compatible authenticator app (e.g. Authy, Google Authenticator) to generate login codes.",
+                "setupButton": "Set up Authenticator App",
+                "activeNotice": "Authenticator app is active.",
+                "disableButton": "Remove Authenticator App",
+                "scanInstruction": "Scan the QR code with your authenticator app, then enter the six-digit code below to confirm.",
+                "qrCodeAlt": "TOTP QR Code",
+                "manualEntryLabel": "Cannot scan? Enter this key manually:",
+                "codeLabel": "Verification code",
+                "confirmButton": "Confirm",
+                "invalidCode": "The code was invalid or has expired. Please try again.",
+                "setupSuccess": "Authenticator app set up successfully.",
+                "disableSuccess": "Authenticator app has been removed."
+            }
+        }
+    }
+}

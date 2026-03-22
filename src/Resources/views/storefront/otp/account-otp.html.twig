@@ -1,0 +1,126 @@
+{% sw_extends '@Storefront/storefront/page/account/_page.html.twig' %}
+
+{% block page_account_main_content %}
+
+<div class="account-otp">
+
+    <h2 class="account-content-header">
+        {{ 'lwndcdr-otp.account.headline'|trans|sw_sanitize }}
+    </h2>
+
+    {# ── Email OTP ─────────────────────────────────────────────── #}
+    {% block account_otp_email %}
+    <div class="card mb-4">
+        <div class="card-body">
+            <h5 class="card-title">{{ 'lwndcdr-otp.account.emailOtp.headline'|trans|sw_sanitize }}</h5>
+            <p class="card-text text-muted">
+                {{ 'lwndcdr-otp.account.emailOtp.description'|trans|sw_sanitize }}
+            </p>
+
+            <form action="{{ path('frontend.account.otp.email.toggle') }}" method="post">
+                <div class="form-check form-switch mb-3">
+                    <input class="form-check-input"
+                           type="checkbox"
+                           id="emailOtpEnabled"
+                           {% if customerOtp and customerOtp.emailOtpEnabled %}checked{% endif %}
+                           onchange="this.form.submit()">
+                    <label class="form-check-label" for="emailOtpEnabled">
+                        {% if customerOtp and customerOtp.emailOtpEnabled %}
+                            {{ 'lwndcdr-otp.account.emailOtp.activeLabel'|trans|sw_sanitize }}
+                        {% else %}
+                            {{ 'lwndcdr-otp.account.emailOtp.inactiveLabel'|trans|sw_sanitize }}
+                        {% endif %}
+                    </label>
+                </div>
+
+                {# Hidden submit so the form works even without JS
+                <button type="submit" class="btn btn-sm btn-secondary">
+                    {{ 'lwndcdr-otp.account.emailOtp.toggleButton'|trans|sw_sanitize }}
+                </button> #}
+            </form>
+        </div>
+    </div>
+    {% endblock %}
+
+    {# ── TOTP (Authenticator App) ──────────────────────────────── #}
+    {% block account_otp_totp %}
+    <div class="card mb-4">
+        <div class="card-body">
+            <h5 class="card-title">{{ 'lwndcdr-otp.account.totp.headline'|trans|sw_sanitize }}</h5>
+            <p class="card-text text-muted">
+                {{ 'lwndcdr-otp.account.totp.description'|trans|sw_sanitize }}
+            </p>
+
+            {% if customerOtp and customerOtp.totpEnabled %}
+                {# ── TOTP is active ── #}
+                {% block account_otp_totp_active %}
+                <div class="alert alert-success d-flex align-items-center mb-3" role="alert">
+                    <span class="me-2">&#10003;</span>
+                    {{ 'lwndcdr-otp.account.totp.activeNotice'|trans|sw_sanitize }}
+                </div>
+
+                <form action="{{ path('frontend.account.otp.totp.disable') }}" method="post">
+                    <button type="submit" class="btn btn-danger btn-sm">
+                        {{ 'lwndcdr-otp.account.totp.disableButton'|trans|sw_sanitize }}
+                    </button>
+                </form>
+                {% endblock %}
+
+            {% elseif totpQrCodeDataUri is defined %}
+                {# ── QR code displayed, waiting for confirmation ── #}
+                {% block account_otp_totp_confirm %}
+                <p>{{ 'lwndcdr-otp.account.totp.scanInstruction'|trans|sw_sanitize }}</p>
+
+                <div class="mb-3">
+                    <img src="{{ totpQrCodeDataUri }}"
+                         alt="{{ 'lwndcdr-otp.account.totp.qrCodeAlt'|trans|sw_sanitize }}"
+                         class="img-fluid d-block mb-2"
+                         style="max-width: 200px;">
+
+                    <p class="text-muted small">
+                        {{ 'lwndcdr-otp.account.totp.manualEntryLabel'|trans|sw_sanitize }}
+                        <code class="user-select-all">{{ totpPlainSecret }}</code>
+                    </p>
+                </div>
+
+                <form action="{{ path('frontend.account.otp.totp.confirm') }}" method="post">
+                    <div class="mb-3" style="max-width: 260px;">
+                        <label for="totp_code" class="form-label">
+                            {{ 'lwndcdr-otp.account.totp.codeLabel'|trans|sw_sanitize }}
+                        </label>
+                        <input type="text"
+                               id="totp_code"
+                               name="totp_code"
+                               class="form-control"
+                               inputmode="numeric"
+                               autocomplete="one-time-code"
+                               maxlength="6"
+                               pattern="\d{6}"
+                               required
+                               autofocus>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-sm">
+                        {{ 'lwndcdr-otp.account.totp.confirmButton'|trans|sw_sanitize }}
+                    </button>
+                </form>
+                {% endblock %}
+
+            {% else %}
+                {# ── TOTP not set up yet ── #}
+                {% block account_otp_totp_setup %}
+                <form action="{{ path('frontend.account.otp.totp.setup') }}" method="post">
+                    <button type="submit" class="btn btn-primary btn-sm">
+                        {{ 'lwndcdr-otp.account.totp.setupButton'|trans|sw_sanitize }}
+                    </button>
+                </form>
+                {% endblock %}
+            {% endif %}
+
+        </div>
+    </div>
+    {% endblock %}
+
+</div>
+
+{% endblock %}
