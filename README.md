@@ -22,6 +22,33 @@ By default, Shopware's storefront login is single-factor — username and passwo
 
 ## Installation
 
+### Via Composer (recommended)
+
+Add the repository to your Shopware root `composer.json`:
+
+```json
+{
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://packages.loendcoder.dev"
+        }
+    ]
+}
+```
+
+Then require the plugin:
+
+```bash
+composer require lwndcdr/lwndcdr-otp-login
+php bin/console plugin:refresh
+php bin/console plugin:install --activate OtpLogin
+php bin/console database:migrate --all
+php bin/console cache:clear
+```
+
+### Manual
+
 ```bash
 # Copy the plugin into your Shopware custom/plugins directory, then:
 php bin/console plugin:refresh
