@@ -2,7 +2,7 @@
     "name": "lwndcdr/sw6otplogin",
     "description": "Yet another (T)OTP Login for shopware 6.",
     "type": "shopware-platform-plugin",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "license": "MIT",
     "require": {
         "shopware/core": "~6.7.0",
