@@ -1,6 +1,6 @@
 {
-    "name": "lwndcdr/lwndcdr-otp-login",
-    "description": "lwndcdr/lwndcdr-otp-login",
+    "name": "lwndcdr/sw6otplogin",
+    "description": "Yet another (T)OTP Login for shopware 6.",
     "type": "shopware-platform-plugin",
     "version": "1.0.0",
     "license": "MIT",
