@@ -1,0 +1,27 @@
+# .github/workflows/release-zip.yml
+name: Release ZIP
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  build:
+    uses: shopware/github-actions/.github/workflows/build-zip.yml@main
+    with:
+      extensionName: OtpLogin
+
+  release:
+    needs: build
+    permissions:
+      contents: write
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: OtpLogin
+
+      - uses: softprops/action-gh-release@v2
+        with:
+          files: OtpLogin.zip

@@ -1,9 +1,16 @@
 {
-    "name": "lwndcdr/lwndcdr-otp-login",
-    "description": "lwndcdr/lwndcdr-otp-login",
+    "name": "lwndcdr/sw6otplogin",
+    "description": "Yet another (T)OTP Login for shopware 6.",
     "type": "shopware-platform-plugin",
-    "version": "1.0.0",
+    "version": "1.0.2",
     "license": "MIT",
+    "authors": [
+        {
+            "name": "Hauke Hagedorn",
+            "homepage": "https://lowendcoder.dev"
+        }
+    ],
+
     "require": {
         "shopware/core": "~6.7.0",
         "spomky-labs/otphp": "^11.4",
@@ -14,6 +21,18 @@
         "label": {
             "de-DE": "Login mit (T)OTP",
             "en-GB": "Login with (T)OTP"
+        },
+        "description": {
+            "de-DE": "Erweitern Sie Ihren Shopware 6 Login um sichere Zwei-Faktor-Authentifizierung mittels zeitbasierter Einmalpasswörter (TOTP). Kompatibel mit gängigen Authenticator-Apps.",
+            "en-GB": "Enhance your Shopware 6 login with secure two-factor authentication using time-based one-time passwords (TOTP). Easy to set up and compatible with all common authenticator apps."
+        },
+        "manufacturerLink": {
+            "de-DE": "https://lowendcoder.dev",
+            "en-GB": "https://lowendcoder.dev"
+        },
+        "supportLink": {
+            "de-DE": "https://github.com/fourstrings77/LwndcdrOtpLogin/issues",
+            "en-GB": "https://github.com/fourstrings77/LwndcdrOtpLogin/issues"
         }
     },
     "autoload": {
